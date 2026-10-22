@@ -1,0 +1,17 @@
+{
+  "asOf": "2026-10-22",
+  "description": "Snapshot of active credit card transfer bonuses to airline programs. These change weekly; treat as a monthly snapshot, not live data. Bonus = extra percent of airline points on top of the normal ratio. Several end within days of this snapshot.",
+  "sourceUrl": "https://newyorkmetropolitan.com/credit-card-transfer-bonuses-october-50-bonus-to-japan-airlines-40-to-air-france-klm-and-more/",
+  "sourceNote": "Syndicated copy of The Points Guy's October 2026 transfer bonus roundup, dated 2026-10-20.",
+  "verification": "secondary",
+  "bonuses": [
+    { "currency": "amex",       "program": "aeromexico", "bonusPercent": 20, "ends": "2026-10-30" },
+    { "currency": "amex",       "program": "flyingblue", "bonusPercent": 25, "ends": "2026-10-31" },
+    { "currency": "capitalone", "program": "avios",      "bonusPercent": 20, "ends": "2026-10-31", "notes": "British Airways Club" },
+    { "currency": "citi",       "program": "jal",        "bonusPercent": 30, "ends": "2026-10-24", "notes": "Full bonus requires Strata Elite, Strata Premier or Prestige" },
+    { "currency": "citi",       "program": "lifemiles",  "bonusPercent": 25, "ends": "2026-10-24", "notes": "Full bonus requires Strata Elite, Strata Premier or Prestige" },
+    { "currency": "citi",       "program": "qatar",      "bonusPercent": [15, 35], "ends": "2026-10-31", "notes": "Tiered: 15% under 50,000 Avios, 25% for 50,000 to 99,999, 35% for 100,000+" },
+    { "currency": "chase",      "program": "aeroplan",   "bonusPercent": 10, "ends": "2026-12-31", "notes": "Only for Chase Aeroplan cardholders; transfers of 50,000+ points; capped at 25,000 bonus points per year" }
+  ],
+  "appGuidance": "Recommended: let users enter a bonus percent manually (effective ratio = ratio x (1 + bonus/100)), and optionally show this snapshot with its as-of date."
+}

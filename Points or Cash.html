@@ -1,0 +1,191 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Points or Cash</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: boarding-pass inspired. A calculator strip up top, then the multiplier board below. */
+:root{
+  --bg:#f3f5f7; --surface:#ffffff; --fg:#14202b; --muted:#5c6b78; --line:#d9e0e6;
+  --accent:#1f5fa8; --accent-soft:#e3edf8;
+  --good:#1d7a4c; --good-soft:#e2f3ea; --warn:#9a6200; --warn-soft:#fbf0dc; --bad:#b0362c; --bad-soft:#f8e3e0;
+  --display:"Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body:"IBM Plex Sans", "Segoe UI", Roboto, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f161d; --surface:#17212b; --fg:#e6edf3; --muted:#93a3b1; --line:#2a3a48;
+  --accent:#7fb2ec; --accent-soft:#1b2f45;
+  --good:#6fd39f; --good-soft:#163527; --warn:#f0bd5e; --warn-soft:#3a2d12; --bad:#f08a80; --bad-soft:#3d1d1a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f161d; --surface:#17212b; --fg:#e6edf3; --muted:#93a3b1; --line:#2a3a48;
+  --accent:#7fb2ec; --accent-soft:#1b2f45;
+  --good:#6fd39f; --good-soft:#163527; --warn:#f0bd5e; --warn-soft:#3a2d12; --bad:#f08a80; --bad-soft:#3d1d1a; color-scheme:dark}
+
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5}
+.wrap{max-width:880px;margin:0 auto;padding-block:28px 48px;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));
+  display:flex;flex-direction:column;gap:28px}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(28px,5vw,40px);letter-spacing:-0.02em;margin:0;text-wrap:balance}
+h2{font-family:var(--display);font-weight:700;font-size:19px;margin:0}
+.lede{color:var(--muted);margin:6px 0 0;max-width:62ch}
+.rule{font-family:var(--mono);font-size:14px;background:var(--accent-soft);color:var(--fg);border-radius:6px;padding:10px 14px;display:inline-block;margin-top:14px}
+.rule b{color:var(--accent)}
+
+/* calculator */
+.calc{background:var(--surface);border:1px solid var(--line);border-radius:10px;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+.calc .in{padding:20px;display:grid;grid-template-columns:1fr 1fr;gap:14px;border-right:1px dashed var(--line)}
+.calc .out{padding:20px;display:flex;flex-direction:column;justify-content:center;gap:6px}
+.field{display:flex;flex-direction:column;gap:4px;min-width:0}
+.field.full{grid-column:1/-1}
+label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+input,select{font:500 16px var(--mono);color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:9px 10px;width:100%;box-sizing:border-box}
+input:focus,select:focus{outline:2px solid var(--accent);outline-offset:1px}
+.cpp{font-family:var(--display);font-weight:800;font-size:44px;line-height:1;font-variant-numeric:tabular-nums}
+.cpp small{font-size:16px;font-weight:600;color:var(--muted);margin-left:4px}
+.verdict{font-weight:600;font-size:15px;border-radius:999px;padding:4px 12px;align-self:flex-start}
+.verdict.good{background:var(--good-soft);color:var(--good)}
+.verdict.ok{background:var(--warn-soft);color:var(--warn)}
+.verdict.bad{background:var(--bad-soft);color:var(--bad)}
+.out p{margin:0;color:var(--muted);font-size:14px}
+@media (max-width:640px){.calc{grid-template-columns:1fr}.calc .in{border-right:0;border-bottom:1px dashed var(--line)}}
+
+/* table */
+.board{display:flex;flex-direction:column;gap:10px}
+.scroll{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+td.mult{font-family:var(--display);font-weight:800;font-size:18px;color:var(--accent);text-align:right}
+td.prog{font-weight:600}
+td.prog span{display:block;font-weight:400;font-size:13px;color:var(--muted)}
+.tag{font-size:12px;font-weight:600;border-radius:999px;padding:3px 9px;white-space:nowrap}
+.tag.fixed{background:var(--good-soft);color:var(--good)}
+.tag.vary{background:var(--warn-soft);color:var(--warn)}
+tr.sel td{background:var(--accent-soft)}
+.note{color:var(--muted);font-size:13px;margin:0;max-width:72ch}
+.notes{display:flex;flex-direction:column;gap:8px}
+.notes p{margin:0;font-size:14px;max-width:70ch}
+a{color:var(--accent)}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Points or Cash</h1>
+    <p class="lede">Multiply the cash fare by the airline's number below. If the award costs fewer points than that, use points. If it costs more, pay cash.</p>
+    <div class="rule">(cash price − award taxes) × <b>multiplier</b> = break-even points</div>
+  </header>
+
+  <section class="calc" aria-label="Calculator">
+    <div class="in">
+      <div class="field full">
+        <label for="prog">Airline program</label>
+        <select id="prog"></select>
+      </div>
+      <div class="field">
+        <label for="cash">Cash fare ($)</label>
+        <input id="cash" type="number" inputmode="decimal" min="0" step="1" value="230">
+      </div>
+      <div class="field">
+        <label for="tax">Award taxes ($)</label>
+        <input id="tax" type="number" inputmode="decimal" min="0" step="0.01" value="5.60">
+      </div>
+      <div class="field full">
+        <label for="pts">Award price (points)</label>
+        <input id="pts" type="number" inputmode="numeric" min="0" step="100" value="18000">
+      </div>
+    </div>
+    <div class="out" aria-live="polite">
+      <label>Value you'd get</label>
+      <div class="cpp" id="cppOut">1.25<small>¢ / point</small></div>
+      <div class="verdict ok" id="verdict">Break-even</div>
+      <p id="detail"></p>
+    </div>
+  </section>
+
+  <section class="board">
+    <h2>U.S. airlines</h2>
+    <div class="scroll"><table>
+      <thead><tr><th>Program</th><th class="num">Value / point</th><th class="num">Multiplier</th><th class="num">Break-even at $<span class="cashEcho">230</span></th><th>How reliable the rule is</th></tr></thead>
+      <tbody id="us"></tbody>
+    </table></div>
+
+    <h2 style="margin-top:14px">Partner & international programs</h2>
+    <p class="note">Useful if you transfer credit card points (Chase, Amex, Citi, Capital One, Bilt) to book U.S. flights through a partner.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>Program</th><th class="num">Value / point</th><th class="num">Multiplier</th><th class="num">Break-even at $<span class="cashEcho">230</span></th><th>How reliable the rule is</th></tr></thead>
+      <tbody id="intl"></tbody>
+    </table></div>
+  </section>
+
+  <section class="notes">
+    <h2>Read before using</h2>
+    <p><b>Green rows</b> price awards off the cash fare, so a point is worth about the same on every flight and the multiplier works well.</p>
+    <p><b>Amber rows</b> use award charts, dynamic pricing or partner awards. Domestic economy is often worth less than the average, while premium cabins on long flights can be worth far more. Treat the multiplier as a floor there.</p>
+    <p>A cash ticket also earns points back, and a Southwest award still charges $5.60 in fees one way. Spirit isn't in TPG's table, so it's left out.</p>
+    <p class="note">Values are The Points Guy's October 2026 estimates (multiplier = 100 ÷ cents per point, rounded). They are third-party estimates, not airline-published values, and TPG updates them monthly. Source: <a href="https://thepointsguy.com/news/monthly-valuations" target="_blank" rel="noopener">TPG monthly valuations</a>.</p>
+  </section>
+</div>
+
+<script>
+const US=[
+ ["Alaska Airlines Atmos Rewards","Includes Hawaiian",1.55,"vary"],
+ ["American AAdvantage","",1.45,"vary"],
+ ["JetBlue TrueBlue","",1.35,"fixed"],
+ ["Frontier Miles","",1.30,"vary"],
+ ["Southwest Rapid Rewards","",1.25,"fixed"],
+ ["Delta SkyMiles","",1.20,"fixed"],
+ ["United MileagePlus","",1.20,"vary"]
+];
+const INTL=[
+ ["Avianca LifeMiles","Star Alliance (United flights)",1.60,"vary"],
+ ["Air Canada Aeroplan","Star Alliance (United flights)",1.50,"vary"],
+ ["Virgin Atlantic Flying Club","Can book Delta flights",1.50,"vary"],
+ ["ANA Mileage Club","",1.40,"vary"],
+ ["British Airways Avios","oneworld (American, Alaska flights)",1.40,"vary"],
+ ["Air France-KLM Flying Blue","SkyTeam (Delta flights)",1.40,"vary"],
+ ["Cathay Asia Miles","",1.30,"vary"],
+ ["Singapore KrisFlyer","",1.30,"vary"],
+ ["Qantas Frequent Flyer","",1.25,"vary"],
+ ["Emirates Skywards","",1.20,"vary"],
+ ["Etihad Guest","",1.20,"vary"],
+ ["Turkish Miles&Smiles","",1.10,"vary"],
+ ["Aeromexico Rewards","",0.80,"vary"]
+];
+const ALL=[...US,...INTL];
+const mult=c=>Math.round(100/c);
+const fmt=n=>Math.round(n).toLocaleString();
+const $=id=>document.getElementById(id);
+
+const sel=$("prog");
+ALL.forEach((r,i)=>{const o=document.createElement("option");o.value=i;o.textContent=r[0];if(r[0].startsWith("Southwest"))o.selected=true;sel.appendChild(o)});
+
+function rows(list,tbody,offset,net,selIdx){
+  tbody.innerHTML=list.map((r,i)=>{
+    const idx=i+offset;
+    const tag=r[3]==="fixed"?'<span class="tag fixed">Reliable</span>':'<span class="tag vary">Floor only</span>';
+    return `<tr class="${idx===selIdx?'sel':''}"><td class="prog">${r[0]}${r[1]?`<span>${r[1]}</span>`:''}</td><td class="num">${r[2].toFixed(2)}¢</td><td class="mult">×${mult(r[2])}</td><td class="num">${net>0?fmt(net*100/r[2]):'–'}</td><td>${tag}</td></tr>`;
+  }).join("");
+}
+
+function update(){
+  const i=+sel.value, r=ALL[i];
+  const cash=parseFloat($("cash").value)||0, tax=parseFloat($("tax").value)||0, pts=parseFloat($("pts").value)||0;
+  const net=Math.max(cash-tax,0);
+  document.querySelectorAll(".cashEcho").forEach(e=>e.textContent=fmt(cash));
+  rows(US,$("us"),0,net,i); rows(INTL,$("intl"),US.length,net,i);
+  const v=$("verdict"), out=$("cppOut"), d=$("detail");
+  if(!pts||!net){out.innerHTML='–<small>¢ / point</small>';v.className="verdict ok";v.textContent="Enter a fare and points";d.textContent="";return}
+  const cpp=net/pts*100, be=net*100/r[2], ratio=cpp/r[2];
+  out.innerHTML=cpp.toFixed(2)+'<small>¢ / point</small>';
+  if(ratio>=1.05){v.className="verdict good";v.textContent="Use points"}
+  else if(ratio>=0.95){v.className="verdict ok";v.textContent="About even, slight lean to "+(ratio>=1?"points":"cash")}
+  else{v.className="verdict bad";v.textContent="Pay cash"}
+  d.textContent=`Break-even for ${r[0].split(" ").slice(0,2).join(" ")} is about ${fmt(be)} points (benchmark ${r[2].toFixed(2)}¢).`;
+}
+["prog","cash","tax","pts"].forEach(id=>$(id).addEventListener("input",update));
+update();
+</script>
+
+</body></html>

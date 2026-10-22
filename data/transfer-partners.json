@@ -1,0 +1,132 @@
+{
+  "asOf": "2026-10-22",
+  "description": "Airline transfer partners for major credit card currencies. 'ratio' = airline points received per 1 card point. Transfer partners change often; recheck quarterly.",
+  "currencies": [
+    {
+      "id": "chase",
+      "name": "Chase Ultimate Rewards",
+      "sourceUrl": "https://upgradedpoints.com/credit-cards/chase-ultimate-rewards-transfer-partners/",
+      "sourceUpdated": "2026-10-15",
+      "verification": "secondary",
+      "partners": [
+        { "program": "aerlingus",  "name": "Aer Lingus AerClub",          "ratio": 1, "time": "instant" },
+        { "program": "aeroplan",   "name": "Air Canada Aeroplan",         "ratio": 1, "time": "instant" },
+        { "program": "flyingblue", "name": "Air France-KLM Flying Blue",  "ratio": 1, "time": "about 1 hour" },
+        { "program": "avios",      "name": "British Airways Club",        "ratio": 1, "time": "instant" },
+        { "program": "iberia",     "name": "Iberia Club",                 "ratio": 1, "time": "instant" },
+        { "program": "jetblue",    "name": "JetBlue TrueBlue",            "ratio": 1, "time": "instant" },
+        { "program": "krisflyer",  "name": "Singapore KrisFlyer",         "ratio": 1, "time": "1 to 2 days" },
+        { "program": "southwest",  "name": "Southwest Rapid Rewards",     "ratio": 1, "time": "instant" },
+        { "program": "united",     "name": "United MileagePlus",          "ratio": 1, "time": "instant" },
+        { "program": "virgin",     "name": "Virgin Atlantic Flying Club", "ratio": 1, "time": "instant" }
+      ]
+    },
+    {
+      "id": "amex",
+      "name": "American Express Membership Rewards",
+      "sourceUrl": "https://upgradedpoints.com/credit-cards/amex-membership-rewards-transfer-partners/",
+      "sourceUpdated": "2026-10-13",
+      "verification": "secondary",
+      "notes": "Transfers to U.S. airline programs (Delta, JetBlue) carry a fee of 0.06 cents per point, capped at $99 per transfer.",
+      "partners": [
+        { "program": "aerlingus",  "name": "Aer Lingus AerClub",          "ratio": 1,   "time": "up to 48 hours" },
+        { "program": "aeromexico", "name": "Aeromexico Rewards",          "ratio": 1.6, "time": "up to 48 hours" },
+        { "program": "aeroplan",   "name": "Air Canada Aeroplan",         "ratio": 1,   "time": "up to 48 hours" },
+        { "program": "flyingblue", "name": "Air France-KLM Flying Blue",  "ratio": 1,   "time": "up to 48 hours" },
+        { "program": "ana",        "name": "ANA Mileage Club",            "ratio": 1,   "time": "up to 4 days" },
+        { "program": "lifemiles",  "name": "Avianca LifeMiles",           "ratio": 1,   "time": "up to 72 hours" },
+        { "program": "avios",      "name": "British Airways Club",        "ratio": 1,   "time": "up to 48 hours" },
+        { "program": "asiamiles",  "name": "Cathay Pacific Asia Miles",   "ratio": 0.8, "time": "up to 48 hours" },
+        { "program": "delta",      "name": "Delta SkyMiles",              "ratio": 1,   "time": "up to 48 hours" },
+        { "program": "emirates",   "name": "Emirates Skywards",           "ratio": 0.8, "time": "up to 48 hours" },
+        { "program": "iberia",     "name": "Iberia Club",                 "ratio": 1,   "time": "up to 48 hours" },
+        { "program": "jetblue",    "name": "JetBlue TrueBlue",            "ratio": 0.8, "time": "up to 48 hours" },
+        { "program": "qantas",     "name": "Qantas Frequent Flyer",       "ratio": 1,   "time": "up to 48 hours" },
+        { "program": "qatar",      "name": "Qatar Airways Privilege Club","ratio": 1,   "time": "up to 48 hours" },
+        { "program": "krisflyer",  "name": "Singapore KrisFlyer",         "ratio": 1,   "time": "up to 48 hours" },
+        { "program": "virgin",     "name": "Virgin Atlantic Flying Club", "ratio": 1,   "time": "up to 48 hours" }
+      ]
+    },
+    {
+      "id": "citi",
+      "name": "Citi ThankYou Rewards",
+      "sourceUrl": "https://upgradedpoints.com/credit-cards/citi-thankyou-points-transfer-partners/",
+      "sourceUpdated": "2026-10-19",
+      "verification": "secondary",
+      "notes": "'ratio' is for Strata Elite, Strata Premier and Prestige. Other Citi cards get 'ratioNonPremium'. Source says 16 airline partners but lists 15; check Citi before relying on the list being complete.",
+      "partners": [
+        { "program": "flyingblue", "name": "Air France-KLM Flying Blue",  "ratio": 1,   "ratioNonPremium": 0.7 },
+        { "program": "american",   "name": "American AAdvantage",         "ratio": 1,   "ratioNonPremium": 0.7 },
+        { "program": "lifemiles",  "name": "Avianca LifeMiles",           "ratio": 1,   "ratioNonPremium": 0.7 },
+        { "program": "asiamiles",  "name": "Cathay Pacific Asia Miles",   "ratio": 1,   "ratioNonPremium": 0.7 },
+        { "program": "emirates",   "name": "Emirates Skywards",           "ratio": 0.8, "ratioNonPremium": 0.56 },
+        { "program": "etihad",     "name": "Etihad Guest",                "ratio": 1,   "ratioNonPremium": 0.7 },
+        { "program": "eva",        "name": "EVA Air Infinity MileageLands","ratio": 1,  "ratioNonPremium": 0.7 },
+        { "program": "jal",        "name": "Japan Airlines Mileage Bank", "ratio": 1,   "ratioNonPremium": 0.7 },
+        { "program": "jetblue",    "name": "JetBlue TrueBlue",            "ratio": 1,   "ratioNonPremium": 0.7 },
+        { "program": "qantas",     "name": "Qantas Frequent Flyer",       "ratio": 1,   "ratioNonPremium": 0.7 },
+        { "program": "qatar",      "name": "Qatar Airways Privilege Club","ratio": 1,   "ratioNonPremium": 0.7 },
+        { "program": "krisflyer",  "name": "Singapore KrisFlyer",         "ratio": 1,   "ratioNonPremium": 0.7 },
+        { "program": "thai",       "name": "Thai Royal Orchid Plus",      "ratio": 1,   "ratioNonPremium": 0.7 },
+        { "program": "turkish",    "name": "Turkish Miles&Smiles",        "ratio": 1,   "ratioNonPremium": 0.7 },
+        { "program": "virgin",     "name": "Virgin Atlantic Flying Club", "ratio": 1,   "ratioNonPremium": 0.7 }
+      ]
+    },
+    {
+      "id": "capitalone",
+      "name": "Capital One Miles",
+      "sourceUrl": "https://www.capitalone.com/learn-grow/money-management/venture-miles-transfer-partnerships/",
+      "sourceUpdated": "2026-01-29",
+      "verification": "primary",
+      "notes": "Virgin partner is Virgin Red, which converts to Virgin Atlantic Flying Club.",
+      "partners": [
+        { "program": "aeromexico", "name": "Aeromexico Rewards",          "ratio": 1 },
+        { "program": "aeroplan",   "name": "Air Canada Aeroplan",         "ratio": 1 },
+        { "program": "lifemiles",  "name": "Avianca LifeMiles",           "ratio": 1 },
+        { "program": "avios",      "name": "British Airways Club",        "ratio": 1 },
+        { "program": "asiamiles",  "name": "Cathay Pacific Asia Miles",   "ratio": 1 },
+        { "program": "emirates",   "name": "Emirates Skywards",           "ratio": 0.75 },
+        { "program": "etihad",     "name": "Etihad Guest",                "ratio": 1 },
+        { "program": "eva",        "name": "EVA Air Infinity MileageLands","ratio": 0.75 },
+        { "program": "finnair",    "name": "Finnair Plus",                "ratio": 1 },
+        { "program": "flyingblue", "name": "Air France-KLM Flying Blue",  "ratio": 1 },
+        { "program": "jal",        "name": "Japan Airlines Mileage Bank", "ratio": 0.75 },
+        { "program": "jetblue",    "name": "JetBlue TrueBlue",            "ratio": 0.6 },
+        { "program": "qantas",     "name": "Qantas Frequent Flyer",       "ratio": 1 },
+        { "program": "qatar",      "name": "Qatar Airways Privilege Club","ratio": 1 },
+        { "program": "krisflyer",  "name": "Singapore KrisFlyer",         "ratio": 1 },
+        { "program": "tap",        "name": "TAP Miles&Go",                "ratio": 1 },
+        { "program": "turkish",    "name": "Turkish Miles&Smiles",        "ratio": 1 },
+        { "program": "virgin",     "name": "Virgin Red (Virgin Atlantic)","ratio": 1 }
+      ]
+    },
+    {
+      "id": "bilt",
+      "name": "Bilt Rewards",
+      "sourceUrl": "https://www.nerdwallet.com/travel/learn/bilt-transfer-partners",
+      "sourceUpdated": "2026-10-03",
+      "verification": "secondary",
+      "notes": "Source states most transfers are 1:1; ratios for Aer Lingus, Cathay, Etihad, Iberia, JAL, Qatar and TAP are inferred from that general statement.",
+      "partners": [
+        { "program": "aerlingus",  "name": "Aer Lingus AerClub",          "ratio": 1 },
+        { "program": "aeroplan",   "name": "Air Canada Aeroplan",         "ratio": 1 },
+        { "program": "flyingblue", "name": "Air France-KLM Flying Blue",  "ratio": 1 },
+        { "program": "alaska",     "name": "Alaska / Hawaiian Atmos Rewards","ratio": 1 },
+        { "program": "lifemiles",  "name": "Avianca LifeMiles",           "ratio": 1 },
+        { "program": "avios",      "name": "British Airways Club",        "ratio": 1 },
+        { "program": "asiamiles",  "name": "Cathay Pacific Asia Miles",   "ratio": 1 },
+        { "program": "emirates",   "name": "Emirates Skywards",           "ratio": 1 },
+        { "program": "etihad",     "name": "Etihad Guest",                "ratio": 1 },
+        { "program": "iberia",     "name": "Iberia Plus",                 "ratio": 1 },
+        { "program": "jal",        "name": "JAL Mileage Bank",            "ratio": 1 },
+        { "program": "jetblue",    "name": "JetBlue TrueBlue",            "ratio": 1 },
+        { "program": "qatar",      "name": "Qatar Airways Privilege Club","ratio": 1 },
+        { "program": "southwest",  "name": "Southwest Rapid Rewards",     "ratio": 1 },
+        { "program": "tap",        "name": "TAP Miles&Go",                "ratio": 1 },
+        { "program": "turkish",    "name": "Turkish Miles&Smiles",        "ratio": 1 },
+        { "program": "united",     "name": "United MileagePlus",          "ratio": 1 },
+        { "program": "virgin",     "name": "Virgin Atlantic Flying Club", "ratio": 1 }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "asOf": "2026-10-22",
+  "description": "Cash fees charged on award (points) tickets. Amounts in USD unless noted. 'verification' is 'primary' (airline or government source), 'secondary' (points/travel publication), or 'unverified'.",
+  "universal": {
+    "september11SecurityFee": {
+      "amountPerOneWay": 5.60,
+      "roundTripCap": 11.20,
+      "appliesTo": "Any trip originating at a U.S. airport, including award tickets",
+      "sourceUrl": "https://tsa.gov/for-industry/security-fees",
+      "verification": "primary"
+    }
+  },
+  "programs": [
+    {
+      "id": "southwest",
+      "domesticOneWayMin": 5.60,
+      "bookingFee": 0,
+      "partnerBookingFee": null,
+      "notes": "Taxes and fees 'from $5.60 per one-way trip'; can be higher on international routes. Award tickets do not earn points.",
+      "sourceUrl": "https://www.southwest.com/html/generated/help/faqs/rapid_rewards_program_terms_and_conditions_faq.html",
+      "verification": "primary"
+    },
+    {
+      "id": "jetblue",
+      "domesticOneWayMin": 5.60,
+      "bookingFee": 0,
+      "partnerBookingFee": null,
+      "notes": "Domestic $5.60 one-way / $11.20 round trip. International $5.60 to $161.50 one-way depending on cities. Points price is based on the published base fare.",
+      "sourceUrl": "https://www.jetblue.com/help/redeeming-points",
+      "verification": "primary"
+    },
+    {
+      "id": "frontier",
+      "domesticOneWayMin": 5.60,
+      "bookingFee": 0,
+      "partnerBookingFee": null,
+      "notes": "No booking charge for awards made on FlyFrontier.com; the Reservations Center charges a service fee (amount not published). Mexico from $40.71 one-way. Older reports of a $15 to $75 close-in award fee (2015 to 2022) are not reflected in the current terms.",
+      "sourceUrl": "https://www.flyfrontier.com/frontiermiles/terms-and-conditions",
+      "verification": "primary"
+    },
+    {
+      "id": "american",
+      "domesticOneWayMin": 5.60,
+      "bookingFee": 0,
+      "partnerBookingFee": 0,
+      "notes": "$75 close-in award fee eliminated Jan 15, 2020. Ticketing service charges apply when booking through reservations for awards bookable online.",
+      "sourceUrl": "https://thepointsguy.com/news/aa-eliminates-close-in-booking-fee",
+      "verification": "secondary"
+    },
+    {
+      "id": "alaska",
+      "domesticOneWayMin": 5.60,
+      "bookingFee": 0,
+      "partnerBookingFee": 20.00,
+      "partnerBookingFeeBasis": "per person, each way",
+      "notes": "Partner award fee rose from $12.50 to $20 for tickets issued on or after July 1, 2026. No partner fee on Alaska, Hawaiian or Horizon flights. Waived for Atmos Summit Visa Infinite cardholders.",
+      "sourceUrl": "https://upgradedpoints.com/news/alaska-airlines-partner-fee-increase-2026/",
+      "verification": "secondary"
+    },
+    {
+      "id": "delta",
+      "domesticOneWayMin": 5.60,
+      "bookingFee": 0,
+      "partnerBookingFee": null,
+      "notes": "Domestic awards carry the $5.60 September 11 fee. Some international partner awards carry carrier-imposed surcharges; not researched yet.",
+      "sourceUrl": "https://tsa.gov/for-industry/security-fees",
+      "verification": "unverified"
+    },
+    {
+      "id": "united",
+      "domesticOneWayMin": 5.60,
+      "bookingFee": 0,
+      "partnerBookingFee": null,
+      "notes": "No separate close-in cash fee found; United instead raises the miles price close to departure. Partner award surcharges not researched yet.",
+      "sourceUrl": "https://onemileatatime.com/united-increases-award-costs-close-to-departure/",
+      "verification": "unverified"
+    },
+    {
+      "id": "aeroplan",
+      "domesticOneWayMin": 5.60,
+      "bookingFee": 0,
+      "partnerBookingFee": 39,
+      "partnerBookingFeeCurrency": "CAD",
+      "partnerBookingFeeBasis": "per award with partner flights (per-passenger/per-direction basis not confirmed)",
+      "notes": "No carrier-imposed fuel surcharges on partner flights including United. Change fee CAD 100 per direction.",
+      "sourceUrl": "https://frequentmiler.com/?p=152828",
+      "verification": "secondary"
+    },
+    {
+      "id": "avios",
+      "domesticOneWayMin": 5.60,
+      "bookingFee": 0,
+      "partnerBookingFee": 0,
+      "notes": "U.S. domestic American Airlines awards booked with British Airways Avios: about $5.60 one-way. Source dated 2019 to 2021; recheck.",
+      "sourceUrl": "https://millionmilesecrets.com/news/3-reasons-why-american-airlines-british-airways-are-my-go-to-combo-for-domestic-award-flights/",
+      "verification": "secondary"
+    }
+  ]
+}

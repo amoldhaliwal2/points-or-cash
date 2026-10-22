@@ -1,0 +1,54 @@
+{
+  "asOf": "2026-10-22",
+  "description": "Which loyalty programs can book award seats on each major U.S. airline. Alliance membership lets member programs book each other's flights, subject to award availability, which varies by flight. Alliance memberships are long-standing and listed from general knowledge (verification 'general'); specific partnerships cite a source.",
+  "alliances": {
+    "star": ["united", "aeroplan", "lifemiles", "ana", "krisflyer", "turkish", "eva", "tap", "thai"],
+    "oneworld": ["american", "alaska", "avios", "iberia", "asiamiles", "qantas", "qatar", "jal", "finnair"],
+    "skyteam": ["delta", "flyingblue", "virgin", "aeromexico"]
+  },
+  "bookUSAirline": [
+    {
+      "airline": "united",
+      "bookableWith": ["united", "aeroplan", "lifemiles", "ana", "krisflyer", "turkish", "eva", "tap", "thai", "jetblue"],
+      "notes": "JetBlue TrueBlue added through the United-JetBlue 'Blue Sky' partnership (launched Oct 2025).",
+      "sourceUrl": "https://airlinegeeks.com/2025/10/23/united-jetblue-launch-first-phase-of-partnership/",
+      "verification": "general + secondary"
+    },
+    {
+      "airline": "american",
+      "bookableWith": ["american", "alaska", "avios", "iberia", "asiamiles", "qantas", "qatar", "jal", "finnair"],
+      "verification": "general"
+    },
+    {
+      "airline": "alaska",
+      "bookableWith": ["alaska", "american", "avios", "iberia", "asiamiles", "qantas", "qatar", "jal", "finnair"],
+      "notes": "Includes Hawaiian Airlines flights.",
+      "verification": "general"
+    },
+    {
+      "airline": "delta",
+      "bookableWith": ["delta", "flyingblue", "virgin", "aeromexico"],
+      "verification": "general"
+    },
+    {
+      "airline": "jetblue",
+      "bookableWith": ["jetblue", "united"],
+      "notes": "MileagePlus can book most, not all, JetBlue flights.",
+      "sourceUrl": "https://airlinegeeks.com/2025/10/23/united-jetblue-launch-first-phase-of-partnership/",
+      "verification": "secondary"
+    },
+    {
+      "airline": "southwest",
+      "bookableWith": ["southwest"],
+      "notes": "No alliance. Southwest has announced partnerships (Icelandair, China Airlines) and said award redemption on partners was coming; current status not confirmed. Chase and Bilt points transfer to Southwest 1:1.",
+      "sourceUrl": "https://thepointsguy.com/news/southwest-launches-china-airlines-partnership/",
+      "verification": "unverified"
+    },
+    {
+      "airline": "frontier",
+      "bookableWith": ["frontier"],
+      "notes": "No alliance and no credit card transfer partners found.",
+      "verification": "general"
+    }
+  ]
+}

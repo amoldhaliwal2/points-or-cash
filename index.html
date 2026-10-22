@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Points or Cash</title>
+<meta name="description" content="Decide whether to use airline points or pay cash for a flight.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Points or Cash</h1>
+    <p class="lede">Figure out whether redeeming points or paying cash gets you more value for a specific flight.</p>
+    <p class="asof" id="asOfLine"></p>
+  </header>
+
+  <section class="calc" aria-label="Calculator">
+    <div class="in">
+      <div class="field full">
+        <label for="prog">Airline / points program</label>
+        <select id="prog"></select>
+      </div>
+
+      <div class="field">
+        <label for="tripType">Trip</label>
+        <select id="tripType">
+          <option value="oneway">One-way</option>
+          <option value="roundtrip">Round trip</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="passengers">Passengers</label>
+        <input id="passengers" type="number" inputmode="numeric" min="1" step="1" value="1">
+      </div>
+
+      <div class="field">
+        <label for="cash">Cash fare, per passenger ($)</label>
+        <input id="cash" type="number" inputmode="decimal" min="0" step="1" value="230">
+      </div>
+      <div class="field">
+        <label for="pts">Award price, per passenger (points)</label>
+        <input id="pts" type="number" inputmode="numeric" min="0" step="100" value="18000">
+      </div>
+
+      <div class="field full">
+        <label for="tax">
+          Award taxes, per passenger ($)
+          <button type="button" class="info-btn" id="taxInfoBtn" aria-describedby="taxInfo">?</button>
+        </label>
+        <input id="tax" type="number" inputmode="decimal" min="0" step="0.01" value="5.60">
+        <p class="note" id="taxInfo"></p>
+      </div>
+
+      <div class="field full" id="fareTypeField" hidden>
+        <label for="fareType">Fare type on the cash ticket</label>
+        <select id="fareType"></select>
+      </div>
+    </div>
+
+    <div class="out" aria-live="polite">
+      <label>Value you'd get redeeming</label>
+      <div class="cpp" id="cppOut">–<small>¢ / point</small></div>
+      <div class="verdict ok" id="verdict">Enter a fare and points</div>
+      <p class="detail" id="detail"></p>
+      <p class="earnback" id="earnback"></p>
+      <p class="totals" id="totals"></p>
+    </div>
+  </section>
+
+  <section class="board">
+    <h2>U.S. airlines</h2>
+    <div class="scroll"><table>
+      <thead><tr>
+        <th>Program</th><th class="num">Value / point</th><th class="num">Multiplier</th>
+        <th class="num">Break-even at $<span class="cashEcho">230</span></th><th>Pricing</th>
+      </tr></thead>
+      <tbody id="us"></tbody>
+    </table></div>
+
+    <h2 style="margin-top:14px">Partner &amp; international programs</h2>
+    <p class="note">Useful if you transfer credit card points (Chase, Amex, Citi, Capital One, Bilt) to book U.S. flights through a partner. Full transfer-partner matching is coming in a later version.</p>
+    <div class="scroll"><table>
+      <thead><tr>
+        <th>Program</th><th class="num">Value / point</th><th class="num">Multiplier</th>
+        <th class="num">Break-even at $<span class="cashEcho">230</span></th><th>Pricing</th>
+      </tr></thead>
+      <tbody id="intl"></tbody>
+    </table></div>
+  </section>
+
+  <section class="notes">
+    <h2>Read before using</h2>
+    <p><b>Fixed-price rows</b> price awards off the cash fare, so a point is worth about the same on every flight and the multiplier works well.</p>
+    <p><b>Variable-price rows</b> use award charts, dynamic pricing or partner awards. Domestic economy is often worth less than the average, while premium cabins on long flights can be worth far more. Treat the multiplier as a floor there.</p>
+    <p id="valuationsSourceNote" class="note"></p>
+    <p class="note">Every number pulled from our research carries a reliability tag (<span class="tag primary">primary</span> <span class="tag secondary">secondary</span> <span class="tag unverified">unverified</span>) and links to its source — hover or tap a tag to see where it came from.</p>
+  </section>
+</div>
+
+<script type="module" src="assets/js/main.js"></script>
+</body>
+</html>

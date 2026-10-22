@@ -1,0 +1,66 @@
+{
+  "asOf": "2026-10-22",
+  "description": "Points or miles earned on paid (cash) tickets for a base member with no status and no co-branded card, unless noted. Rates are per U.S. dollar of base fare plus carrier-imposed fees (government taxes excluded) unless noted. Award tickets generally earn nothing.",
+  "programs": [
+    {
+      "id": "southwest",
+      "basis": "per dollar",
+      "fares": { "Basic": 2, "Choice": 6, "Choice Preferred": 10, "Choice Extra": 14 },
+      "notes": "Southwest says earning rates change starting in 2027. Award tickets earn no points.",
+      "sourceUrl": "https://www.nerdwallet.com/travel/learn/southwest-fares",
+      "verification": "secondary"
+    },
+    {
+      "id": "delta",
+      "basis": "per dollar",
+      "fares": { "Main Basic": 0, "Delta Basic experiences": 2, "Classic / Refundable": 5, "Extra": 7 },
+      "eliteRates": { "Silver": 7, "Gold": 8, "Platinum": 9, "Diamond": 11 },
+      "sourceUrl": "https://www.delta.com/earnmiles",
+      "verification": "primary"
+    },
+    {
+      "id": "united",
+      "basis": "per dollar",
+      "fares": { "Basic Economy": 0, "Standard fares": 3 },
+      "withCobrandedCard": { "Basic Economy": 3, "Standard fares": 6 },
+      "eliteRates": { "Premier Silver": 5, "Premier Gold": 6, "Premier Platinum": 7, "Premier 1K": 9 },
+      "notes": "Effective for tickets issued on or after April 2, 2026. Card rate applies to annual-fee United cards (Gateway and Debit require $10,000 calendar-year spend).",
+      "sourceUrl": "https://awardwallet.com/news/united-mileageplus/mileage-earning-changes-2026/",
+      "verification": "secondary"
+    },
+    {
+      "id": "american",
+      "basis": "per dollar",
+      "fares": { "Basic Economy": 0, "Standard fares": 5 },
+      "eliteRates": { "Gold": 7, "Platinum": 8, "Platinum Pro": 9, "Executive Platinum": 11 },
+      "notes": "Basic Economy bought on or after Dec 17, 2025 earns no miles.",
+      "sourceUrl": "https://www.aa.com/i18n/travel-info/partner-airlines/american-airlines.html",
+      "verification": "primary"
+    },
+    {
+      "id": "jetblue",
+      "basis": "per dollar",
+      "fares": { "Base fares (Main Base, EvenMore Base, BlueFirst Base, Mint Base)": 2, "Main, EvenMore, BlueFirst, Mint (and Flex)": 6 },
+      "notes": "Includes the online booking bonus (3 base + 3 online; 1 + 1 on Base fares). Phone bookings earn base rate only.",
+      "sourceUrl": "https://www.jetblue.com/help/earning-points",
+      "verification": "primary"
+    },
+    {
+      "id": "frontier",
+      "basis": "per dollar",
+      "fares": { "Basic fares": 1, "Bundles": 6 },
+      "eliteRates": { "Silver": [3, 8], "Gold": [5, 10], "Platinum": [7, 12], "Diamond": [11, 16] },
+      "notes": "Chart effective Sept 1, 2026; elite values are [basic, bundle]. Previously a flat 10 per dollar.",
+      "sourceUrl": "https://www.flyfrontier.com/frontiermiles/terms-and-conditions",
+      "verification": "primary"
+    },
+    {
+      "id": "alaska",
+      "basis": "per mile flown",
+      "fares": { "Saver": 0, "Main and above": "distance-based (exact percentages not yet verified)" },
+      "notes": "Saver fares booked on or after June 11, 2026 and flown on or after Aug 1, 2026 earn no points. From Jan 1, 2027 members choose: 1 point per mile, 5 points per dollar, or 500 points per flight.",
+      "sourceUrl": "https://frequentmiler.com/negative-alaska-airlines-changes-increased-partner-award-fees-no-points-or-status-points-on-saver-fares/",
+      "verification": "secondary"
+    }
+  ]
+}

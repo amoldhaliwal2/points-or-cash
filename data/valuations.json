@@ -1,0 +1,31 @@
+{
+  "asOf": "2026-10",
+  "source": {
+    "name": "The Points Guy monthly valuations (October 2026)",
+    "url": "https://thepointsguy.com/news/monthly-valuations",
+    "note": "Third-party estimates, not airline-published values. Update monthly."
+  },
+  "programs": [
+    { "id": "alaska",        "name": "Alaska Airlines Atmos Rewards", "region": "us",   "centsPerPoint": 1.55, "tiedToCashFare": false, "notes": "Includes Hawaiian Airlines" },
+    { "id": "american",      "name": "American AAdvantage",           "region": "us",   "centsPerPoint": 1.45, "tiedToCashFare": false, "notes": "" },
+    { "id": "jetblue",       "name": "JetBlue TrueBlue",              "region": "us",   "centsPerPoint": 1.35, "tiedToCashFare": true,  "notes": "" },
+    { "id": "frontier",      "name": "Frontier Miles",                "region": "us",   "centsPerPoint": 1.30, "tiedToCashFare": false, "notes": "" },
+    { "id": "southwest",     "name": "Southwest Rapid Rewards",       "region": "us",   "centsPerPoint": 1.25, "tiedToCashFare": true,  "notes": "Award tickets still charge the $5.60 one-way September 11 security fee" },
+    { "id": "delta",         "name": "Delta SkyMiles",                "region": "us",   "centsPerPoint": 1.20, "tiedToCashFare": true,  "notes": "" },
+    { "id": "united",        "name": "United MileagePlus",            "region": "us",   "centsPerPoint": 1.20, "tiedToCashFare": false, "notes": "" },
+
+    { "id": "lifemiles",     "name": "Avianca LifeMiles",             "region": "intl", "centsPerPoint": 1.60, "tiedToCashFare": false, "notes": "Star Alliance; can book United flights" },
+    { "id": "aeroplan",      "name": "Air Canada Aeroplan",           "region": "intl", "centsPerPoint": 1.50, "tiedToCashFare": false, "notes": "Star Alliance; can book United flights" },
+    { "id": "virgin",        "name": "Virgin Atlantic Flying Club",   "region": "intl", "centsPerPoint": 1.50, "tiedToCashFare": false, "notes": "Can book Delta flights" },
+    { "id": "ana",           "name": "ANA Mileage Club",              "region": "intl", "centsPerPoint": 1.40, "tiedToCashFare": false, "notes": "" },
+    { "id": "avios",         "name": "British Airways Avios",         "region": "intl", "centsPerPoint": 1.40, "tiedToCashFare": false, "notes": "oneworld; can book American and Alaska flights" },
+    { "id": "flyingblue",    "name": "Air France-KLM Flying Blue",    "region": "intl", "centsPerPoint": 1.40, "tiedToCashFare": false, "notes": "SkyTeam; can book Delta flights" },
+    { "id": "asiamiles",     "name": "Cathay Asia Miles",             "region": "intl", "centsPerPoint": 1.30, "tiedToCashFare": false, "notes": "" },
+    { "id": "krisflyer",     "name": "Singapore KrisFlyer",           "region": "intl", "centsPerPoint": 1.30, "tiedToCashFare": false, "notes": "" },
+    { "id": "qantas",        "name": "Qantas Frequent Flyer",         "region": "intl", "centsPerPoint": 1.25, "tiedToCashFare": false, "notes": "" },
+    { "id": "emirates",      "name": "Emirates Skywards",             "region": "intl", "centsPerPoint": 1.20, "tiedToCashFare": false, "notes": "" },
+    { "id": "etihad",        "name": "Etihad Guest",                  "region": "intl", "centsPerPoint": 1.20, "tiedToCashFare": false, "notes": "" },
+    { "id": "turkish",       "name": "Turkish Airlines Miles&Smiles", "region": "intl", "centsPerPoint": 1.10, "tiedToCashFare": false, "notes": "" },
+    { "id": "aeromexico",    "name": "Aeromexico Rewards",            "region": "intl", "centsPerPoint": 0.80, "tiedToCashFare": false, "notes": "" }
+  ]
+}
