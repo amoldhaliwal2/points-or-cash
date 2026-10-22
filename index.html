@@ -60,10 +60,15 @@
     </div>
 
     <div class="out" aria-live="polite">
-      <label>Value you'd get redeeming</label>
-      <div class="cpp" id="cppOut">–<small>¢ / point</small></div>
-      <div class="verdict ok" id="verdict">Enter a fare and points</div>
-      <p class="detail" id="detail"></p>
+      <div class="decision" id="decision">
+        <p class="decision-headline" id="decisionHeadline">Enter a fare and points</p>
+        <p class="decision-detail" id="decisionDetail"></p>
+        <p class="decision-threshold" id="decisionThreshold"></p>
+      </div>
+      <div class="cpp-row">
+        <label>Value you'd get redeeming</label>
+        <div class="cpp" id="cppOut">–<small>¢ / point</small></div>
+      </div>
       <p class="earnback" id="earnback"></p>
       <p class="totals" id="totals"></p>
     </div>

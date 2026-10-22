@@ -72,12 +72,19 @@ export function renderTaxInfo(el, program, taxResult) {
   el.innerHTML = parts.join(" ");
 }
 
+const DECISION_HEADLINE = {
+  points: "Use points",
+  even: "Toss-up — either works",
+  cash: "Pay cash",
+};
+
 export function renderOutput({ dom, result, earnBack, program, passengers, awardTaxes, awardPoints, cashFare }) {
   if (!result) {
     dom.cppOut.innerHTML = '–<small>¢ / point</small>';
-    dom.verdict.className = "verdict ok";
-    dom.verdict.textContent = "Enter a fare and points";
-    dom.detail.textContent = "";
+    dom.decision.className = "decision";
+    dom.decisionHeadline.textContent = "Enter a fare and points";
+    dom.decisionDetail.textContent = "";
+    dom.decisionThreshold.textContent = "";
     dom.earnback.textContent = "";
     dom.totals.textContent = "";
     return;
@@ -85,16 +92,17 @@ export function renderOutput({ dom, result, earnBack, program, passengers, award
 
   dom.cppOut.innerHTML = `${result.cppRedeemed.toFixed(2)}<small>¢ / point</small>`;
 
-  const verdictText = {
-    points: "Use points",
-    even: "About even",
-    cash: "Pay cash",
-  }[result.verdict];
-  dom.verdict.className = `verdict ${result.verdict === "points" ? "good" : result.verdict === "cash" ? "bad" : "ok"}`;
-  dom.verdict.textContent = verdictText;
+  dom.decision.className = `decision ${result.verdict}`;
+  dom.decisionHeadline.textContent = DECISION_HEADLINE[result.verdict];
 
-  const cmp = result.cppRedeemed >= result.benchmark ? "above" : "below";
-  dom.detail.textContent = `You'd get ${result.cppRedeemed.toFixed(2)}¢/point here, ${cmp} this program's typical ${result.benchmark.toFixed(2)}¢. Counting taxes and (where available) the points you'd earn back paying cash, redeeming points costs about ${fmtMoney(result.pointsOptionCost)} in value vs. ${fmtMoney(result.cashOptionCost)} for cash, per passenger.`;
+  if (result.verdict === "even") {
+    dom.decisionDetail.textContent = `Points and cash cost about the same here — within ${fmtMoney(result.costDiff)} of each other per passenger (${fmtMoney(result.pointsOptionCost)} points vs. ${fmtMoney(result.cashOptionCost)} cash). Pick whichever currency you'd rather hold onto.`;
+  } else {
+    const winner = result.verdict === "points" ? "Points save" : "Cash saves";
+    dom.decisionDetail.textContent = `${winner} about ${fmtMoney(result.costDiff)} per passenger (${fmtMoney(result.pointsOptionCost)} points vs. ${fmtMoney(result.cashOptionCost)} cash).`;
+  }
+
+  dom.decisionThreshold.textContent = `At this cash fare and tax, points clearly win below ~${fmtInt(result.pointsLowThreshold)} points, and cash clearly wins above ~${fmtInt(result.pointsHighThreshold)} points. This award is priced at ${fmtInt(awardPoints)} points.`;
 
   if (earnBack) {
     dom.earnback.textContent = `Paying cash would also earn about ${fmtInt(earnBack.pointsEarned)} points back (≈${fmtMoney(earnBack.dollarValue)}), already factored in above.`;

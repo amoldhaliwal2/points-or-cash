@@ -29,7 +29,21 @@ h2{font-family:var(--display);font-weight:700;font-size:19px;margin:0}
 /* calculator */
 .calc{background:var(--surface);border:1px solid var(--line);border-radius:10px;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
 .calc .in{padding:20px;display:grid;grid-template-columns:1fr 1fr;gap:14px;border-right:1px dashed var(--line);align-content:start}
-.calc .out{padding:20px;display:flex;flex-direction:column;justify-content:center;gap:8px}
+.calc .out{padding:20px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+
+.decision{border-radius:8px;padding:14px 16px;border:1px solid var(--line);background:var(--bg)}
+.decision.points{background:var(--good-soft);border-color:var(--good)}
+.decision.cash{background:var(--bad-soft);border-color:var(--bad)}
+.decision.even{background:var(--warn-soft);border-color:var(--warn)}
+.decision-headline{font-family:var(--display);font-weight:800;font-size:22px;margin:0 0 6px;line-height:1.15}
+.decision.points .decision-headline{color:var(--good)}
+.decision.cash .decision-headline{color:var(--bad)}
+.decision.even .decision-headline{color:var(--warn)}
+.decision-detail{margin:0 0 6px;font-size:14px;color:var(--fg)}
+.decision-threshold{margin:0;font-size:12.5px;color:var(--muted)}
+
+.cpp-row{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.cpp-row label{margin-right:2px}
 .field{display:flex;flex-direction:column;gap:4px;min-width:0}
 .field.full{grid-column:1/-1}
 label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;display:flex;align-items:center;gap:6px}
@@ -42,7 +56,7 @@ input:focus,select:focus{outline:2px solid var(--accent);outline-offset:1px}
 .verdict.good{background:var(--good-soft);color:var(--good)}
 .verdict.ok{background:var(--warn-soft);color:var(--warn)}
 .verdict.bad{background:var(--bad-soft);color:var(--bad)}
-.out .detail,.out .earnback,.out .totals{margin:0;color:var(--muted);font-size:13.5px}
+.out .earnback,.out .totals{margin:0;color:var(--muted);font-size:13.5px}
 .out .earnback{font-style:italic}
 @media (max-width:640px){.calc{grid-template-columns:1fr}.calc .in{border-right:0;border-bottom:1px dashed var(--line)}}
 

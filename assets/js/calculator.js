@@ -48,11 +48,25 @@ export function computeResult({ program, cashFare, awardTaxes, awardPoints, earn
   const cashOptionCost = earnBack ? cashFare - earnBack.dollarValue : cashFare;
 
   const diff = (cashOptionCost - pointsOptionCost) / cashOptionCost;
+  const costDiff = cashOptionCost - pointsOptionCost; // positive = points cheaper
 
   let verdict;
   if (diff > VERDICT_THRESHOLD) verdict = "points";
   else if (diff < -VERDICT_THRESHOLD) verdict = "cash";
   else verdict = "even";
+
+  // Points-price thresholds where the verdict would flip, holding everything
+  // else (cash fare, taxes, earn-back) fixed. Below pointsLowThreshold, points
+  // clearly win; above pointsHighThreshold, cash clearly wins; in between is
+  // the "about even" band.
+  const pointsLowThreshold = Math.max(
+    0,
+    Math.round(((cashOptionCost * (1 - VERDICT_THRESHOLD) - awardTaxes) * 100) / program.centsPerPoint)
+  );
+  const pointsHighThreshold = Math.max(
+    0,
+    Math.round(((cashOptionCost * (1 + VERDICT_THRESHOLD) - awardTaxes) * 100) / program.centsPerPoint)
+  );
 
   return {
     cppRedeemed,
@@ -61,12 +75,10 @@ export function computeResult({ program, cashFare, awardTaxes, awardPoints, earn
     cashOptionCost: round2(cashOptionCost),
     verdict,
     diffPercent: Math.round(diff * 100),
+    costDiff: round2(Math.abs(costDiff)),
+    pointsLowThreshold,
+    pointsHighThreshold,
   };
-}
-
-export function breakEvenPoints(netFare, centsPerPoint) {
-  if (netFare <= 0) return null;
-  return Math.round((netFare * 100) / centsPerPoint);
 }
 
 function round2(n) {
