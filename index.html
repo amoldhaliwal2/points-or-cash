@@ -45,11 +45,9 @@
       </div>
 
       <div class="field full">
-        <label for="tax">
-          Award taxes, per passenger ($)
-          <button type="button" class="info-btn" id="taxInfoBtn" aria-describedby="taxInfo">?</button>
-        </label>
-        <input id="tax" type="number" inputmode="decimal" min="0" step="0.01" value="5.60">
+        <label for="tax">Award taxes, per passenger ($)</label>
+        <input id="tax" type="number" inputmode="decimal" min="0" step="0.01" value="5.60" readonly>
+        <button type="button" class="tax-edit-toggle" id="taxEditToggle">I was quoted a different fee — edit it</button>
         <p class="note" id="taxInfo"></p>
       </div>
 

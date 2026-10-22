@@ -11,6 +11,7 @@ const dom = {
   pts: $("pts"),
   tax: $("tax"),
   taxInfo: $("taxInfo"),
+  taxEditToggle: $("taxEditToggle"),
   fareTypeField: $("fareTypeField"),
   fareType: $("fareType"),
   cppOut: $("cppOut"),
@@ -27,17 +28,26 @@ const dom = {
 };
 
 let data;
-let taxEditedByUser = false;
+let taxUnlocked = false; // true once the user chooses to override our estimate
 
 function currentProgram() {
   return data.programsById.get(dom.prog.value);
+}
+
+function setTaxLocked(locked) {
+  taxUnlocked = !locked;
+  dom.tax.readOnly = locked;
+  dom.tax.classList.toggle("locked", locked);
+  dom.taxEditToggle.textContent = locked
+    ? "I was quoted a different fee — edit it"
+    : "Use our estimated fee instead";
 }
 
 function refreshTaxDefault() {
   const program = currentProgram();
   const result = computeDefaultTax(program, dom.tripType.value, data.universalFee);
   renderTaxInfo(dom.taxInfo, program, result);
-  if (!taxEditedByUser) {
+  if (!taxUnlocked) {
     dom.tax.value = result.amount;
   }
 }
@@ -67,7 +77,7 @@ function update() {
 }
 
 function onProgramOrTripChange() {
-  taxEditedByUser = false;
+  setTaxLocked(true);
   refreshTaxDefault();
   update();
 }
@@ -79,13 +89,22 @@ async function init() {
   dom.asOfLine.textContent = `Values as of ${data.valuationsAsOf} (points values) / ${data.awardFeesAsOf} (fees). Third-party estimates, not airline-published figures — recheck before booking.`;
   dom.valuationsSourceNote.innerHTML = `Point values are ${data.valuationsSource.name}, ${data.valuationsAsOf} (multiplier = 100 ÷ ¢/point, rounded). <a href="${data.valuationsSource.url}" target="_blank" rel="noopener">Source</a>.`;
 
+  setTaxLocked(true);
   refreshTaxDefault();
   update();
 
   dom.prog.addEventListener("change", onProgramOrTripChange);
   dom.tripType.addEventListener("change", onProgramOrTripChange);
-  dom.tax.addEventListener("input", () => {
-    taxEditedByUser = true;
+  dom.tax.addEventListener("input", update);
+  dom.taxEditToggle.addEventListener("click", () => {
+    const wasLocked = dom.tax.readOnly;
+    setTaxLocked(!wasLocked);
+    if (wasLocked) {
+      dom.tax.focus();
+      dom.tax.select();
+    } else {
+      refreshTaxDefault();
+    }
     update();
   });
   ["cash", "pts", "passengers", "fareType"].forEach((id) =>
